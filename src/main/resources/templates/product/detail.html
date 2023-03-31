@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+            th:replace="~{/layout/index :: dynamic(~{:: main})}">
+   
+    <body>
+       <main>
+         Chi Tieets
+         <h1>[[${item.name}]]</h1>
+         <h1>[[${item.category.name}]]</h1>
+         Cung Loai
+         <ul>
+            <li th:each="p:${item.category.products}">
+                  <a th:href="@{|/api/v1/product/detail/${p.id}|}">[[${p.name}]]</a>
+            </li>
+         </ul>
+      </main>
+    </body>
+</html>
