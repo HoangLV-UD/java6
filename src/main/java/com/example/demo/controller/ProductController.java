@@ -10,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
+
 @Controller
 public class ProductController {
     @Autowired
@@ -19,10 +22,16 @@ public class ProductController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping("/api/v1/product")
-   public String list(Model model){
-    List<Product>list= productService.findAll();
-    model.addAttribute("items", list);
+    @RequestMapping("/api/v1/product/list")
+    public String list(Model model, @RequestParam(value = "cid",required = false)Optional<String> cid){
+        if(!cid.isEmpty()){
+            List<Product>list= productService.findByCategoryId(cid);
+            model.addAttribute("items", list);
+        }else{
+            List<Product>list= productService.findAll();
+            model.addAttribute("items", list);
+        }
+
         System.out.println("abc");
         return "product/list";
    }
@@ -30,7 +39,6 @@ public class ProductController {
     @RequestMapping("/api/v1/product/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id){
         Product item = productService.findById(id);
-
             model.addAttribute("item", item);
             return "product/detail";
     }

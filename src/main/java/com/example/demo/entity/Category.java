@@ -21,6 +21,6 @@ public class Category implements Serializable{
 	String name;
 	@JsonIgnore
 	@OneToMany(mappedBy = "category")
-	List<Product> products;
+		List<Product> products;
 	
 }

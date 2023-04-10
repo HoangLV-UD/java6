@@ -3,16 +3,45 @@
             th:replace="~{/layout/index :: dynamic(~{:: main})}">
    
     <body>
-       <main>
-         Chi Tieets
-         <h1>[[${item.name}]]</h1>
-         <h1>[[${item.category.name}]]</h1>
-         Cung Loai
-         <ul>
-            <li th:each="p:${item.category.products}">
-                  <a th:href="@{|/api/v1/product/detail/${p.id}|}">[[${p.name}]]</a>
-            </li>
-         </ul>
-      </main>
+
+    <main th:object="${item}" class="poly-item-detail">
+        <div class="row">
+            <div class="panel panel-primary" >
+                <div class="panel-body">
+                    <div>
+                        <img th:src="@{|/assets/image/*{image}|}">
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li th:text="*{name}"></li>
+                        <li th:text="*{price}"></li>
+                        <li th:text="*{createDate}"></li>
+                        <li th:text="*{category.name}"></li>
+
+                    </ul>
+                </div>
+                <div class="panel-footer text-rigth">
+                    <button class="btn btn-success">
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Hàng Cùng Loại
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li th:each="p:*{category.products}">
+                              <a th:href="@{|/api/v1/product/detail/${p.id}|}">[[${p.name}]]</a>
+                        </li>
+                     </ul>
+                </div>
+            </div>
+        </div>
+    </main>
     </body>
 </html>

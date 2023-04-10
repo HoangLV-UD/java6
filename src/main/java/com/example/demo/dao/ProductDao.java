@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 
 public interface ProductDao extends JpaRepository<Product, Integer> {
@@ -15,4 +17,6 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 //            " LEFT JOIN property_product pp ON r.rom_id = r.id" +
 //            " LEFT JOIN image i ON p.id = i.product_id")
     List<Product> findAll();
+    @Query("SELECT p FROM Product p WHERE p.category=?1")
+    List<Product> findByCategoryId(Optional<String> cid);
 }

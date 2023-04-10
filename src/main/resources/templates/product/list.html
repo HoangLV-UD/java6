@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{:: main})}">
-
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+    
 <body>
-    <main>
-        <div th:each="p:${items}" class="col-md-4">
-            <div class="panel panel-primary text-center" >
+    <main class="row">
+        <div th:each="p:${items}" class="col-sm-4">
+            <div class="panel panel-primary poly-item text-center" >
                 <div class="panel-heading">
-                    <div th:text="${p.name}"></div>
+                    <div class="panel-title" th:utext="${p.name}"></div>
                 </div>
                 <div class="panel-body">
                     <a th:href="@{|/api/v1/product/detail/${p.id}|}">
                         <div>
-                            <img th:src="@{|/assets/${p.image}|}" height= 100% width= 100%;>
+                            <img th:src="@{|/assets/image/${p.image}|}">
                         </div>
                       
                     </a>
