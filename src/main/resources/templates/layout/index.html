@@ -14,8 +14,9 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
-<body class="container">
+<body class="container" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
     <header class="row">FPT polytecnic</header>
     <nav class="">
         <div th:replace="/layout/_menu.html"></div>
@@ -32,5 +33,7 @@
             HoangLV 
         </foot>
     </div>
+
+    <script src="/assets/js/shopping-cart-app.js"></script>
 </body>
 </html>
