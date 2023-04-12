@@ -23,8 +23,8 @@ public class ProductController {
     private CategoryService categoryService;
 
     @RequestMapping("/api/v1/product/list")
-    public String list(Model model, @RequestParam(value = "cid",required = false)Optional<String> cid){
-        if(!cid.isEmpty()){
+    public String list(Model model, @RequestParam(value = "cid",required = false)String cid){
+        if(cid != null){
             List<Product>list= productService.findByCategoryId(cid);
             model.addAttribute("items", list);
         }else{
