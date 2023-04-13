@@ -20,7 +20,7 @@ app.controller("shopping-cart-ctrl", function ($scope, $http) {
     },
     remove(id) {
       var index = this.items.findIndex(item => item.id == id); //tim sp theo id
-      this.items.splice(index, 1);
+      this.items.splice(index, 1); //splice dùng để thêm hoặc loại bỏ phần tử xong mảng
       this.saveToLocalStorage();
     },
     clear() {
