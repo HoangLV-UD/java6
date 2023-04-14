@@ -10,6 +10,7 @@ public class SecurityController {
     @RequestMapping("/security/login/form")
     public String loginForm(Model model){
         model.addAttribute("message", "Vui lòng đăng nhập");
+        System.out.println("aaaa");
         return "security/login";
     }
     @RequestMapping("/security/login/success")
