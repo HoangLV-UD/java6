@@ -9,11 +9,11 @@
             <table class="table">
                <thead>
                   <tr>
-                     <th>id</th>
-                     <th>name</th>
-                     <th>Price</th>
-                     <th>Quantity</th>
-                     <th>Amount</th>
+                     <th>Mã Sản Phẩm</th>
+                     <th>Tên Sản Phẩm</th>
+                     <th>Giá</th>
+                     <th>Số Lượng</th>
+                     <th>Tổng tiền</th>
                      <th></th>
                   </tr>
                </thead>
@@ -26,7 +26,7 @@
                         <td>{{item.qty*item.price | number : 2}}</td>
                         <td>
                            <button ng-click="cart.remove(item.id)" class="btn btn-sm btn-danger">
-                              <i class="glyphion glyphicon-trash"></i>
+                              <i class="glyphicon glyphicon-trash"></i>
                            </button>
                         </td>
                      </tr>
@@ -34,9 +34,9 @@
             </table>
             <div class="panel-footer">
                <button ng-click="cart.clear()" class="btn btn-danger">
-                  <i class="glyphion glyphicon-trash"></i> Clear
+                  <i class="glyphicon glyphicon-trash"></i> Clear
                </button>
-               <a th:href="@{/api/order/checkout}" class="btn btn-primary">
+               <a th:href="@{/api/order/checkout}" class="btn btn-success">
                   <i class="glyphicon glyphicon-hand-right"></i> CheckOut
                </a>
             </div>

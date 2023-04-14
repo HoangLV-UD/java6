@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th ="html://www.thymeleaf.org" th:fragment="dynamic(main)">
+<html xmlns:th="html://www.thymeleaf.org" th:fragment="dynamic(main)">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,18 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/shopping-cart-app.css">
     <title>HoangLV</title>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
+
 <body class="container" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
-    <header class="row">FPT polytecnic</header>
+    <header class="row" style="width: 300px; color: brown; height: 100px; ">FPT polytecnic</header>
     <nav class="">
         <div th:replace="/layout/_menu.html"></div>
     </nav>
@@ -29,11 +31,11 @@
             <div th:replace="/layout/_cart-info.html"></div>
             <div th:replace="/layout/_category.html"></div>
         </aside>
-        <foot class="row">
-            HoangLV 
-        </foot>
     </div>
-
+    <footer class="row">
+        HoangLV
+    </footer>
     <script src="/assets/js/shopping-cart-app.js"></script>
 </body>
+
 </html>
