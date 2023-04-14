@@ -2,6 +2,8 @@ package com.example.demo.dao;
 
 import com.example.demo.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface OrderDao extends JpaRepository<Order,String> {
+@Repository
+public interface OrderDao extends JpaRepository<Order,Long> {
 }
