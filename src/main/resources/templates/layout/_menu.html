@@ -1,17 +1,23 @@
-<nav class="navbar navbar-inverse">
+<div xmlns:th="http://www.thymeleaf.org">
+  <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="http://localhost:8082/api/v1/product/list">Tạp Hóa Xanh</a>
-      </div>
       <ul class="nav navbar-nav">
-        <li><a th:href="@{/}">Home</a></li>
-        <li><a th:href="@{/security/login/form}">Sign IN</a></li>
-        <li><a th:href="@{/security/logoff}">Sign Out</a></li>
-        <li><a th:href="@{/order/list}">Your Order</a></li>
+        <li><a class="navbar-brand" href="http://localhost:8082/api/v1/product/list">Tạp Hóa Xanh</a></li>
+        <th:block th:if="${#request.remoteUser}">
+
+          <li><a th:href="@{/security/logoff}">Sign Out</a></li>
+          <li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAFF')}">
+            <a th:href="@{/api/v1/order/list}">Your Order</a>
+          </li>
+        </th:block>
+        <th:block th:unless="${#request.remoteUser}">
+          <li><a th:href="@{/security/login/form}">Sign IN</a></li>
+        </th:block>
         <li><a th:href="@{/admin/home/index}">Administration</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Welcome You</a></li>
-      </ul> 
+        <li><a href="#">Welcome [[${#request.remoteUser}]]</a></li>
+      </ul>
     </div>
   </nav>
+</div>
