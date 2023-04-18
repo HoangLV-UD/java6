@@ -10,5 +10,7 @@ public interface OrderService {
 
     Order findById(Long id);
 
-    String create(JsonNode jsonNode);
+    Order create(JsonNode jsonNode);
+
+    Object findByUsername(String username);
 }
