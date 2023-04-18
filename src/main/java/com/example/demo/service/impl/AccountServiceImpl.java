@@ -11,6 +11,7 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountDao dao;
 
+
     @Override
     public Account findById(String username) {
         return dao.findById(username).get();

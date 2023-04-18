@@ -7,13 +7,16 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@SuppressWarnings("serial")
 @Data
 @Entity 
 @Table(name = "Accounts")
-public class Account  implements Serializable{
+@NoArgsConstructor
+@AllArgsConstructor
+public class Account{
 	@Id
 	String username;
 	String password;
@@ -25,6 +28,7 @@ public class Account  implements Serializable{
 	List<Order> orders;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "account",fetch = FetchType.EAGER)
 	List<Authority> authorities;
+
 }
