@@ -5,12 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
 public class SecurityController {
-//    @Autowired
-//     Logger log;
+
     @RequestMapping("/security/login/form")
     public String loginForm(Model model){
         model.addAttribute("message", "Vui lòng đăng nhập");
@@ -33,7 +33,6 @@ public class SecurityController {
     @RequestMapping("/security/login/error")
     public String loginError(Model model){
         model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
-//        log.config("Sai tài khoản hoặc mật khẩu!");
         return "security/login";
     }
 
