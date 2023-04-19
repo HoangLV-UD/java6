@@ -1,10 +1,10 @@
 app.controller("product-ctrl", function($scope, $http){
 	$scope.initialize = function(){
-		$http.get("/rest/categories").then(resp => {
+		$http.get("/api/rest/category").then(resp => {
 			$scope.categories = resp.data;
 		})
 
-		$http.get("/rest/products").then(resp => {
+		$http.get("/api/rest/product").then(resp => {
 			$scope.items = resp.data;
 			$scope.items.forEach(item => {
 				item.createDate = new Date(item.createDate)
@@ -28,7 +28,7 @@ app.controller("product-ctrl", function($scope, $http){
 
 	$scope.create = function(){
 		var item = angular.copy($scope.form);
-		$http.post(`/rest/products`, item).then(resp => {
+		$http.post(`/api/rest/product`, item).then(resp => {
 			resp.data.createDate = new Date(resp.data.createDate)
 			$scope.items.push(resp.data);
 			$scope.reset();
@@ -41,7 +41,7 @@ app.controller("product-ctrl", function($scope, $http){
 
 	$scope.update = function(){
 		var item = angular.copy($scope.form);
-		$http.put(`/rest/products/${item.id}`, item).then(resp => {
+		$http.put(`/api/rest/product/${item.id}`, item).then(resp => {
 			var index = $scope.items.findIndex(p => p.id == item.id);
 			$scope.items[index] = item;
 			alert("Cập nhật sản phẩm thành công!");
@@ -54,7 +54,7 @@ app.controller("product-ctrl", function($scope, $http){
 
 	$scope.delete = function(item){
 		if(confirm("Bạn muốn xóa sản phẩm này?")){
-			$http.delete(`/rest/products/${item.id}`).then(resp => {
+			$http.delete(`/api/rest/product/${item.id}`).then(resp => {
 				var index = $scope.items.findIndex(p => p.id == item.id);
 				$scope.items.splice(index, 1);
 				$scope.reset();
@@ -69,7 +69,7 @@ app.controller("product-ctrl", function($scope, $http){
 	$scope.imageChanged = function(files){
 		var data = new FormData();
 		data.append('file', files[0]);
-		$http.post('/rest/upload/images', data, {
+		$http.post('/api/rest/upload/images', data, {
 			transformRequest: angular.identity,
 			headers: {'Content-Type': undefined}
         }).then(resp => {
