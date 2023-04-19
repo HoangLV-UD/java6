@@ -10,7 +10,7 @@
           <li>
             <a th:href="@{/api/v1/order/list}">Your Order</a>
           </li>
-          <li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAFF')}">
+          <li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
             <a th:href="@{/admin/home/index}">Administration</a>
           </li>
         </th:block>
