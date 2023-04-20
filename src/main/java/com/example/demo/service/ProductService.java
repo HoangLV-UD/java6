@@ -13,4 +13,10 @@ public interface ProductService  {
     Product findById(Integer id);
 
     List<Product> findByCategoryId(String cid);
+
+    Product create(Product obj);
+
+    Product update(Product obj);
+
+    void deleteById(Integer id);
 }

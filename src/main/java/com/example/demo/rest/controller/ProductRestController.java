@@ -3,10 +3,7 @@ package com.example.demo.rest.controller;
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,23 @@ public class ProductRestController {
     public Product getOne(@PathVariable("id") Integer id){
 
         return productService.findById(id);
+    }
+    @PutMapping("{id}")
+    public Product updateProduct(@PathVariable("id") Integer id, @RequestBody Product obj){
+
+        return productService.update(obj);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteProduct(@PathVariable("id") Integer id){
+
+         productService.deleteById(id);
+    }
+
+    @PostMapping()
+    public Product create(@RequestBody Product obj){
+
+        return productService.create(obj);
     }
 
     @GetMapping()

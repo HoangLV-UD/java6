@@ -7,12 +7,15 @@ app.controller("authority-ctrl", function($scope, $http, $location){
 		// load staffs and directors (administrators)
 		$http.get("/rest/accounts?admin=true").then(resp => {
 	    	$scope.admins = resp.data;
+			console.log($scope.admins);
 	    })
 	    // load authorites of staffs and directors
 		$http.get("/rest/authorities?admin=true").then(resp => {
 	    	$scope.authorities = resp.data;
+			console.log(resp.data);
 	    }).catch(error => {
 	    	$location.path("/unauthorized");
+			console.log(resp.data);
 	    })
 	}
 

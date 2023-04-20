@@ -31,8 +31,20 @@ public class ProductServiceImpl implements ProductService {
         return dao.findProductByCategoryId(cid);
     }
 
-//    public List<Product> findByCategoryId_v2(String cid) {
-//
-//        return dao.findByCategoryId(cid);
-//    }
+    @Override
+    public Product create(Product obj) {
+        return dao.save(obj);
+    }
+
+    @Override
+    public Product update(Product obj) {
+        return dao.save(obj);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+         dao.deleteById(id);
+    }
+
+
 }

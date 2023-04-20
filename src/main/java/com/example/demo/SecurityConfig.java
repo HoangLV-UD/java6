@@ -53,7 +53,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
                 byte[] token = (username + ":" + user.getPassword()).getBytes();
                 authentication.put("token", "Basic " + Base64.getEncoder().encodeToString(token));
                 session.setAttribute("authentication", authentication);
-
+//                System.out.println("WelCome: " + user.getUsername()+ ", "  + user.getAuthorities());
                 return User.withUsername(username).password(pass).roles(roles).build();
             } catch (NoSuchElementException e) {
                 throw new UsernameNotFoundException(username + " not found!");
