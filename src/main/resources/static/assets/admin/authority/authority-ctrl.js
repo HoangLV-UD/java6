@@ -1,16 +1,16 @@
 app.controller("authority-ctrl", function($scope, $http, $location){
 	$scope.initialize = function(){
 		// load all roles
-		$http.get("/rest/roles").then(resp => {
+		$http.get("/api/rest/roles").then(resp => {
 	    	$scope.roles = resp.data;
 	    })
 		// load staffs and directors (administrators)
-		$http.get("/rest/accounts?admin=true").then(resp => {
+		$http.get("/api/rest/accounts?admin=true").then(resp => {
 	    	$scope.admins = resp.data;
 			console.log($scope.admins);
 	    })
 	    // load authorites of staffs and directors
-		$http.get("/rest/authorities?admin=true").then(resp => {
+		$http.get("/api/rest/authorities?admin=true").then(resp => {
 	    	$scope.authorities = resp.data;
 			console.log(resp.data);
 	    }).catch(error => {
@@ -27,10 +27,10 @@ app.controller("authority-ctrl", function($scope, $http, $location){
 	
 	$scope.authority_changed = function(acc, role){
 		var authority = $scope.authority_of(acc, role);
-		if(authority){ // đã cấp quyền => thu hồi quyền (xóa)
+		if(authority){ 
 			$scope.revoke_authority(authority);
 		}
-		else { // chưa được cấp quyền => cấp quyền (thêm mới)
+		else { 
 			authority = {account: acc, role: role};
 			$scope.grant_authority(authority);
 		}
@@ -38,7 +38,7 @@ app.controller("authority-ctrl", function($scope, $http, $location){
 	
 	// Thêm mới authority
 	$scope.grant_authority = function(authority){
-		$http.post(`/rest/authorities`, authority).then(resp => {
+		$http.post(`/api/rest/authorities`, authority).then(resp => {
 			$scope.authorities.push(resp.data)
 			alert("Cấp quyền sử dụng thành công");
 		}).catch(error => {
@@ -48,7 +48,7 @@ app.controller("authority-ctrl", function($scope, $http, $location){
 	}
 	// Xóa authority
 	$scope.revoke_authority = function(authority){
-		$http.delete(`/rest/authorities/${authority.id}`).then(resp => {
+		$http.delete(`/api/rest/authorities/${authority.id}`).then(resp => {
 			var index = $scope.authorities.findIndex(a => a.id == authority.id);
 			$scope.authorities.splice(index, 1);
 			alert("Thu hồi quyền sử dụng thành công");

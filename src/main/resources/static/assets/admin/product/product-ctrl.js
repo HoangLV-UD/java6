@@ -17,7 +17,7 @@ app.controller("product-ctrl", function($scope, $http){
 		$scope.form = {
 			createDate: new Date(),
 			available: true,
-			image: "/images/cloud-upload.jpg"
+			image: "cloud-upload.jpg"
 		}
 	}
 
