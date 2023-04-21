@@ -4,9 +4,7 @@ import com.example.demo.entity.Category;
 import com.example.demo.entity.Product;
 import com.example.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,11 @@ public class CategoryRestController {
     public List<Category> getAll(){
 
         return service.findAll();
+    }
+
+    @PostMapping()
+    public Category create(@RequestBody Category obj){
+
+        return service.create(obj);
     }
 }
