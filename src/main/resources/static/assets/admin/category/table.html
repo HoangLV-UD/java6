@@ -1,4 +1,4 @@
-<div class="panel panel-default" ng-if="items">
+<div class="panel panel-default" ng-if="categories">
   <div class="panel-heading">CATEGORY LIST</div>
   <table class="table table-condensed">
     <thead class="bg-success" style="font-variant: small-caps;">
@@ -9,15 +9,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in pager.items">
-      <td>{{item.id}}</td>
-      <td>{{item.name}}</td>
+    <tr ng-repeat="category in categories">
+      <td>{{category.id}}</td>
+      <td>{{category.name}}</td>
       <td>
         <div class="btn-group btn-group-xs">
-          <a ng-click="edit(item)" href="" class="btn btn-warning">
+          <a ng-click="edit(category)" href="" class="btn btn-warning">
             <b class="glyphicon glyphicon-edit"></b>
           </a>
-          <a ng-click="delete(item)" href="" class="btn btn-danger">
+          <a ng-click="delete(category)" href="" class="btn btn-danger">
             <b class="glyphicon glyphicon-trash"></b>
           </a>
         </div>

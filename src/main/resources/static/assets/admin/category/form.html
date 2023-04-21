@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <div>Id</div>
-                        <input ng-model="form.price" class="form-control">
+                        <input ng-model="form.id" class="form-control">
                     </div>
                     <div class="form-group col-sm-6">
                         <div>Name</div>
@@ -21,10 +21,10 @@
         </div>
     </div>
     <div class="panel-footer text-center">
-        <button ng-click="create()" ng-disabled="form.id" class="btn btn-primary">
+        <button ng-click="createCategory()"  class="btn btn-primary">
             <b class="glyphicon glyphicon-plus"></b> Create
         </button>
-        <button ng-click="update()" ng-disabled="!form.id" class="btn btn-success">
+        <button ng-click="updateCategory()" ng-disabled="!form.id" class="btn btn-success">
             <b class="glyphicon glyphicon-save"></b> Update
         </button>
         <button ng-click="delete(form)" ng-disabled="!form.id" class="btn btn-danger">
