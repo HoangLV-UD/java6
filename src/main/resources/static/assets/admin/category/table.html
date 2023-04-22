@@ -9,16 +9,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="category in categories">
+    <tr ng-repeat="category in categories"> <!--ng-repeat: lặp lại các dòng trong bảng theo từng category tương ứng -->
       <td>{{category.id}}</td>
       <td>{{category.name}}</td>
       <td>
         <div class="btn-group btn-group-xs">
           <a ng-click="edit(category)" href="" class="btn btn-warning">
             <b class="glyphicon glyphicon-edit"></b>
-          </a>
-          <a ng-click="delete(category)" href="" class="btn btn-danger">
-            <b class="glyphicon glyphicon-trash"></b>
           </a>
         </div>
       </td>

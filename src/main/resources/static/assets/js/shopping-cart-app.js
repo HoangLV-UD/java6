@@ -7,14 +7,14 @@ app.controller("shopping-cart-ctrl", function ($scope, $http) {
       if (item) {
         item.qty++;
         this.saveToLocalStorage();
-        alert("Success")
+        alert("Thêm vào giỏ hàng thành công!")
       }
       else {
         $http.get(`/api/rest/product/${id}`).then(resp => {
           resp.data.qty = 1;
           this.items.push(resp.data);
           this.saveToLocalStorage();
-          alert("Success")
+          alert("Thêm vào giỏ hàng thành công!")
         })
       }
     },
@@ -70,7 +70,7 @@ app.controller("shopping-cart-ctrl", function ($scope, $http) {
         $scope.cart.clear();
         location.href = "/api/v1/order/detail/" + resp.data.id;
       }).catch(error => {
-        alert("Đặt hàng lỗi!")
+        alert("Đặt hàng thất bại!")
         console.log(error)
       })
     }

@@ -1,4 +1,5 @@
 app.controller("category-ctrl", function ($scope, $http) {
+    $scope.form ={};
     $scope.initialize = function () {
         $http.get("/api/rest/category").then(resp => {
             $scope.categories = resp.data;
@@ -11,7 +12,7 @@ app.controller("category-ctrl", function ($scope, $http) {
 	}
     $scope.createCategory = function(){
 		var category = angular.copy($scope.form);
-        console.log('form',$scope.form)
+        console.log('form',$scope)
 		if (category && Object.keys(category).length > 0) { // kiểm tra xem item có giá trị hay không
             $http.post(`/api/rest/category`, category).then(resp => {
                 console.log(333,category);
@@ -19,7 +20,7 @@ app.controller("category-ctrl", function ($scope, $http) {
                 $scope.reset();
                 alert("Thêm mới danh mục thành công!");
             }).catch(error => {
-                alert("Lỗi thêm mới danh mục!");
+                alert("Thêm mới danh mục thất bại!");
                 console.log("Error", error);
             });
         } else {
@@ -30,14 +31,18 @@ app.controller("category-ctrl", function ($scope, $http) {
     $scope.updateCategory = function(){
 		var item = angular.copy($scope.form);
 		$http.put(`/api/rest/category/${item.id}`, item).then(resp => {
-			var index = $scope.items.findIndex(p => p.id == item.id);
-			$scope.items[index] = item;
+			var index = $scope.categories.findIndex(p => p.id == item.id);
+			$scope.categories[index] = item;
 			alert("Cập nhật danh mục thành công!");
 		})
 		.catch(error => {
-			alert("Lỗi cập nhật  danh mục!");
+			alert("Cập nhật danh mục thất bại!");
 			console.log("Error", error);
 		});
 	}
     $scope.initialize();
+
+    $scope.reset = function(){
+		$scope.form = {}
+	}
 });

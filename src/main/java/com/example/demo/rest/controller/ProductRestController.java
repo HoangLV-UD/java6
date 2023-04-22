@@ -3,10 +3,12 @@ package com.example.demo.rest.controller;
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-
+@Validated
 @RestController
 @RequestMapping("/api/rest/product")
 public class ProductRestController {
@@ -31,7 +33,7 @@ public class ProductRestController {
     }
 
     @PostMapping()
-    public Product create(@RequestBody Product obj){
+    public Product create(  @RequestBody @Valid Product obj){
 
         return productService.create(obj);
     }

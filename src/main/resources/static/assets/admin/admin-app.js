@@ -1,7 +1,7 @@
 app = angular.module("admin-app", ["ngRoute"]);
 
 app.run(function($http, $rootScope){
-    $http.get(`/rest/security/authentication`).then(resp => {
+    $http.get(`/api/rest/authorities`).then(resp => {
     	if(resp.data){
     		$auth = $rootScope.$auth = resp.data;
         	$http.defaults.headers.common["Authorization"] = $auth.token;

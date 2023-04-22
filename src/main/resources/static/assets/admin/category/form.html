@@ -8,27 +8,22 @@
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <div>Id</div>
-                        <input ng-model="form.id" class="form-control">
+                        <input ng-model="form.id" ng-disabled="true" class="form-control"> <!--ng-model dùng để lấy các biến và data vào form-->
                     </div>
                     <div class="form-group col-sm-6">
                         <div>Name</div>
                         <input ng-model="form.name" class="form-control">
                     </div>
                 </div>
-                <div class="row">
-                </div>
             </div>
         </div>
     </div>
     <div class="panel-footer text-center">
-        <button ng-click="createCategory()"  class="btn btn-primary">
+        <button ng-click="createCategory()" ng-disabled="form.id" class="btn btn-primary">
             <b class="glyphicon glyphicon-plus"></b> Create
         </button>
         <button ng-click="updateCategory()" ng-disabled="!form.id" class="btn btn-success">
             <b class="glyphicon glyphicon-save"></b> Update
-        </button>
-        <button ng-click="delete(form)" ng-disabled="!form.id" class="btn btn-danger">
-            <b class="glyphicon glyphicon-trash"></b> Delete
         </button>
         <button ng-click="reset()" class="btn btn-info">
             <b class="glyphicon glyphicon-refresh"></b> Reset

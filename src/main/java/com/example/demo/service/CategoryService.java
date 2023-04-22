@@ -10,4 +10,6 @@ public interface CategoryService {
     List<Category> findAll();
 
     Category create(Category obj);
+
+    Category update(Category obj);
 }

@@ -28,13 +28,15 @@ app.controller("product-ctrl", function($scope, $http){
 
 	$scope.create = function(){
 		var item = angular.copy($scope.form);
+		console.log('form',$scope)
 		$http.post(`/api/rest/product`, item).then(resp => {
 			resp.data.createDate = new Date(resp.data.createDate)
 			$scope.items.push(resp.data);
 			$scope.reset();
+			console.log('form2',$scope)
 			alert("Thêm mới sản phẩm thành công!");
 		}).catch(error => {
-			alert("Lỗi thêm mới sản phẩm!");
+			alert("Thêm mới sản phẩm thất bại!");
 			console.log("Error", error);
 		});
 	}
@@ -47,7 +49,7 @@ app.controller("product-ctrl", function($scope, $http){
 			alert("Cập nhật sản phẩm thành công!");
 		})
 		.catch(error => {
-			alert("Lỗi cập nhật sản phẩm!");
+			alert("Cập nhật sản phẩm thất bại!");
 			console.log("Error", error);
 		});
 	}
@@ -60,7 +62,7 @@ app.controller("product-ctrl", function($scope, $http){
 				$scope.reset();
 				alert("Xóa sản phẩm thành công!");
 			}).catch(error => {
-				alert("Lỗi xóa sản phẩm!");
+				alert("Xóa sản phẩm thất bại!");
 				console.log("Error", error);
 			})
 		}
@@ -75,7 +77,7 @@ app.controller("product-ctrl", function($scope, $http){
         }).then(resp => {
 			$scope.form.image = resp.data.name;
 		}).catch(error => {
-			alert("Lỗi upload hình ảnh");
+			alert("Upload hình ảnh thất bại");
 			console.log("Error", error);
 		})
 	}

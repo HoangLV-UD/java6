@@ -24,4 +24,10 @@ public class CategoryRestController {
 
         return service.create(obj);
     }
+
+    @PutMapping("{id}")
+    public Category update(@PathVariable("id") String id, @RequestBody Category obj){
+
+        return service.update(obj);
+    }
 }

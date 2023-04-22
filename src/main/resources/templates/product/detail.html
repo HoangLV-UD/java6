@@ -22,7 +22,7 @@
                     </ul>
                 </div>
                 <div class="panel-footer text-rigth">
-                    <button class="btn btn-success">
+                    <button th:attr="ng-click=@{|cart.add(*{id})|}" class="btn btn-success">
                         <i class="glyphicon glyphicon-shopping-cart"></i>
                     </button>
                 </div>
