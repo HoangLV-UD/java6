@@ -44,16 +44,15 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
                 Account user = accountService.findById(username);
                 String pass = new BCryptPasswordEncoder().encode(user.getPassword());
                 String[] roles = user.getAuthorities().stream()
-                        .map(er -> er.getRole().getId())
+                        .map(er -> er.getRole().getId()) //danh sach quyen
                         .collect(Collectors.toList())
-                        .toArray(new String[0]);
+                        .toArray(new String[0]);//them vao list va convert thanh mot mang role
 
-                Map<String, Object> authentication = new HashMap<>();
-                authentication.put("user", user);
-                byte[] token = (username + ":" + user.getPassword()).getBytes();
-                authentication.put("token", "Basic " + Base64.getEncoder().encodeToString(token));
-                session.setAttribute("authentication", authentication);
-//                System.out.println("WelCome: " + user.getUsername()+ ", "  + user.getAuthorities());
+//                Map<String, Object> authentication = new HashMap<>();
+//                authentication.put("user", user);
+//                byte[] token = (username + ":" + user.getPassword()).getBytes();
+//                authentication.put("token", "Basic " + Base64.getEncoder().encodeToString(token));
+//                session.setAttribute("authentication", authentication);
                 return User.withUsername(username).password(pass).roles(roles).build();
             } catch (NoSuchElementException e) {
                 throw new UsernameNotFoundException(username + " not found!");
@@ -65,8 +64,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/api/v1/order/**").authenticated()
-                .antMatchers("/admin/**").hasAnyRole("STAF", "DIRE")
+                .antMatchers("/api/v1/order/**").authenticated() // các đường dẫn này cần đăng nhập mới được phép truy cập
+                .antMatchers("/admin/**").hasAnyRole("STAF", "DIRE") //
                 .antMatchers("/rest/authorities").hasRole("DIRE")
                 .anyRequest().permitAll();
 
